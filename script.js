@@ -24,10 +24,20 @@ const pillDesktop = document.getElementById('pill-desktop');
 
 function updateDevicePills() {
   const w = window.innerWidth;
-  pillMobile.classList.toggle('active', w <= 480);
-  pillTablet.classList.toggle('active', w > 480 && w <= 768);
-  pillDesktop.classList.toggle('active', w > 768);
+
+  pillMobile.classList.remove('active');
+  pillTablet.classList.remove('active');
+  pillDesktop.classList.remove('active');
+
+  if (w <= 600) {
+    pillMobile.classList.add('active');
+  } else if (w <= 1024) {
+    pillTablet.classList.add('active');
+  } else {
+    pillDesktop.classList.add('active');
+  }
 }
+
 
 updateDevicePills();
 window.addEventListener('resize', updateDevicePills);
