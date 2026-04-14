@@ -1,91 +1,80 @@
 // ===========================
-// VIEWPORT BADGE
+// VIEWPORT & FOOTER
 // ===========================
-const viewportBadge = document.getElementById('viewport-badge');
-const footerWidth = document.getElementById('footer-width');
+const viewportBadge = document.getElementById("viewport-badge");
+const footerWidth = document.getElementById("footer-width");
 
 function updateViewport() {
-  const w = window.innerWidth;
-  const h = window.innerHeight;
-  const label = w + 'px × ' + h + 'px';
+  const label = `${window.innerWidth}px × ${window.innerHeight}px`;
   viewportBadge.textContent = label;
   footerWidth.textContent = label;
 }
-
+window.addEventListener("resize", updateViewport);
 updateViewport();
-window.addEventListener('resize', updateViewport);
 
 // ===========================
-// DEVICE STATUS PILLS
+// SIMULADOR DE DISPOSITIVOS
 // ===========================
-const pillMobile  = document.getElementById('pill-mobile');
-const pillTablet  = document.getElementById('pill-tablet');
-const pillDesktop = document.getElementById('pill-desktop');
+const body = document.body;
+const btnMobile = document.getElementById("pill-mobile");
+const btnTablet = document.getElementById("pill-tablet");
+const btnDesktop = document.getElementById("pill-desktop");
 
-function updateDevicePills() {
-  const w = window.innerWidth;
+function setDevice(mode) {
+  // Remove todas as classes de simulação
+  body.classList.remove("is-mobile", "is-tablet", "is-desktop");
+  btnMobile.classList.remove("active");
+  btnTablet.classList.remove("active");
+  btnDesktop.classList.remove("active");
 
-  pillMobile.classList.remove('active');
-  pillTablet.classList.remove('active');
-  pillDesktop.classList.remove('active');
-
-  if (w <= 600) {
-    pillMobile.classList.add('active');
-  } else if (w <= 1024) {
-    pillTablet.classList.add('active');
-  } else {
-    pillDesktop.classList.add('active');
-  }
+  // Ativa a selecionada
+  body.classList.add(`is-${mode}`);
+  document.getElementById(`pill-${mode}`).classList.add("active");
 }
 
+btnMobile.addEventListener("click", () => setDevice("mobile"));
+btnTablet.addEventListener("click", () => setDevice("tablet"));
+btnDesktop.addEventListener("click", () => setDevice("desktop"));
 
-updateDevicePills();
-window.addEventListener('resize', updateDevicePills);
+// Auto-detectar no início baseado na largura real
+if (window.innerWidth <= 600) setDevice("mobile");
+else if (window.innerWidth <= 1024) setDevice("tablet");
+else setDevice("desktop");
 
 // ===========================
-// NAVBAR HAMBÚRGUER (real)
+// NAVBAR PRINCIPAL
 // ===========================
-const hamburger = document.getElementById('hamburger');
-const navLinks  = document.getElementById('nav-links');
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("nav-links");
 
-hamburger.addEventListener('click', () => {
-  const isOpen = navLinks.classList.toggle('open');
-  hamburger.classList.toggle('open', isOpen);
-});
-
-// Fecha ao clicar num link
-navLinks.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    navLinks.classList.remove('open');
-    hamburger.classList.remove('open');
-  });
+hamburger.addEventListener("click", () => {
+  navLinks.classList.toggle("open");
 });
 
 // ===========================
-// DEMO HAMBÚRGUER (seção 3)
+// DEMO HAMBURGER (SEÇÃO 3)
 // ===========================
-const demoHamburger  = document.getElementById('demo-hamburger');
-const demoMenuOpen   = document.getElementById('demo-menu-open');
-const hamburgerStatus = document.getElementById('hamburger-status');
+const demoBtn = document.getElementById("demo-hamburger");
+const demoMenu = document.getElementById("demo-menu-open");
+const demoStatus = document.getElementById("hamburger-status");
 
-demoHamburger.addEventListener('click', () => {
-  const isOpen = demoMenuOpen.classList.toggle('open');
-  demoHamburger.classList.toggle('open', isOpen);
-  hamburgerStatus.textContent = isOpen ? '✅ Menu aberto' : 'Menu fechado';
+demoBtn.addEventListener("click", () => {
+  const isOpen = demoMenu.classList.toggle("open");
+  demoStatus.textContent = isOpen ? "✅ Menu aberto" : "Menu fechado";
+  demoMenu.style.display = isOpen ? "flex" : "none";
+  demoMenu.style.flexDirection = "column";
 });
 
 // ===========================
-// GRID INTERATIVO (seção 4)
+// GRID INTERATIVO (SEÇÃO 4)
 // ===========================
-const gridBtns       = document.querySelectorAll('.grid-btn');
-const interactiveGrid = document.getElementById('interactive-grid');
+const gridBtns = document.querySelectorAll(".grid-btn");
+const interactiveGrid = document.getElementById("interactive-grid");
 
-gridBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    gridBtns.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-
-    const cols = btn.dataset.cols;
-    interactiveGrid.style.gridTemplateColumns = 'repeat(' + cols + ', 1fr)';
+gridBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    gridBtns.forEach((b) => b.classList.remove("active"));
+    btn.classList.add("active");
+    interactiveGrid.style.gridTemplateColumns = `repeat(${btn.dataset.cols}, 1fr)`;
   });
 });

@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <!-- NAVBAR (teste de menu hambúrguer) -->
     <header class="navbar" id="navbar">
       <div class="nav-brand">
         <span class="brand-dot"></span>
@@ -32,129 +31,72 @@
       </button>
     </header>
 
-    <!-- HERO -->
     <section class="hero">
       <div class="hero-tag">Teste de Interface do Usuário</div>
       <h1 class="hero-title">Sua interface<br /><em>se adapta?</em></h1>
       <p class="hero-sub">
-        Redimensione a janela, interaja com os elementos e observe como cada
-        componente responde.
+        Use os botões abaixo para <strong>forçar</strong> layouts ou redimensione a janela.
       </p>
       <div class="hero-resize-hint">
         <span class="resize-icon">↔</span>
-        <span>Arraste a borda do navegador para testar</span>
+        <span>Arraste a borda ou clique nos botões abaixo</span>
       </div>
       <div class="viewport-badge" id="viewport-badge">-- x --</div>
     </section>
 
-    <!-- SEÇÃO 1: RESPONSIVIDADE (celular / tablet / desktop) -->
     <section class="section" id="secao-responsividade">
       <div class="section-label">01</div>
       <h2 class="section-title">Celular · Tablet · Desktop</h2>
       <p class="section-desc">
-        Veja como o grid se reorganiza conforme a largura da tela.
+        Clique nos botões abaixo para simular o comportamento em diferentes dispositivos.
       </p>
 
       <div class="device-status" id="device-status">
-        <div class="device-pill" id="pill-mobile">📱 Mobile</div>
-        <div class="device-pill" id="pill-tablet">💻 Tablet</div>
-        <div class="device-pill" id="pill-desktop">🖥 Desktop</div>
+        <button class="device-pill" id="pill-mobile" style="cursor:pointer">📱 Mobile</button>
+        <button class="device-pill" id="pill-tablet" style="cursor:pointer">💻 Tablet</button>
+        <button class="device-pill" id="pill-desktop" style="cursor:pointer">🖥 Desktop</button>
       </div>
 
       <div class="responsive-grid">
         <div class="resp-card">
           <div class="resp-card-num">01</div>
           <div class="resp-card-title">Card A</div>
-          <div class="resp-card-text">
-            Este card reorganiza em 1, 2 ou 3 colunas conforme a tela.
-          </div>
+          <div class="resp-card-text">Este card se ajusta conforme o modo selecionado.</div>
         </div>
         <div class="resp-card">
           <div class="resp-card-num">02</div>
           <div class="resp-card-title">Card B</div>
-          <div class="resp-card-text">
-            Em mobile ocupa 100% da largura disponível.
-          </div>
+          <div class="resp-card-text">Em mobile ele ocupa a largura total.</div>
         </div>
         <div class="resp-card">
           <div class="resp-card-num">03</div>
           <div class="resp-card-title">Card C</div>
-          <div class="resp-card-text">
-            Em tablet divide 2 colunas. Em desktop, 3 colunas.
-          </div>
+          <div class="resp-card-text">Em desktop ele divide o espaço em 3.</div>
         </div>
       </div>
     </section>
 
-    <!-- SEÇÃO 2: TEXTOS QUE QUEBRAM -->
     <section class="section alt" id="secao-textos">
       <div class="section-label">02</div>
       <h2 class="section-title">Textos e overflow</h2>
-      <p class="section-desc">
-        Testando comportamento de textos longos em diferentes contextos.
-      </p>
-
       <div class="text-tests">
         <div class="text-test-card">
           <div class="text-test-label">Texto truncado (1 linha)</div>
-          <div class="text-truncate-1">
-            Este é um texto muito longo que deveria ser truncado com reticências
-            ao final quando ultrapassar o limite definido pela largura do
-            container pai.
-          </div>
+          <div class="text-truncate-1">Este é um texto muito longo que deveria ser truncado com reticências.</div>
         </div>
-
         <div class="text-test-card">
-          <div class="text-test-label">Texto truncado (2 linhas)</div>
-          <div class="text-truncate-2">
-            Este é um texto bastante longo que permite duas linhas antes de ser
-            cortado com reticências. Ideal para previews de artigos, descrições
-            de produto e listagens em geral onde o espaço é limitado.
-          </div>
-        </div>
-
-        <div class="text-test-card">
-          <div class="text-test-label">Palavra sem espaço (quebra forçada)</div>
-          <div class="text-break">
-            Supercalifragilisticexpialidocious-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-          </div>
-        </div>
-
-        <div class="text-test-card">
-          <div class="text-test-label">
-            Sobrepõe elemento sem overflow:hidden
-          </div>
-          <div class="text-overflow-demo">
-            <div class="overflow-box bad">
-              <span class="ov-label">❌ Sem controle</span>
-              PalavraGiganteSemEspaçoQueVaiQuebrarOLayout
-            </div>
-            <div class="overflow-box good">
-              <span class="ov-label">✅ Com overflow-wrap</span>
-              PalavraGiganteSemEspaçoQueVaiQuebrarOLayout
-            </div>
-          </div>
+          <div class="text-test-label">Palavra sem espaço</div>
+          <div class="text-break">Supercalifragilisticexpialidocious-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
         </div>
       </div>
     </section>
 
-    <!-- SEÇÃO 3: MENU HAMBÚRGUER -->
     <section class="section" id="secao-hamburger">
       <div class="section-label">03</div>
       <h2 class="section-title">Menu hambúrguer</h2>
-      <p class="section-desc">
-        Em telas pequenas (abaixo de 768px) o menu do topo vira hambúrguer.
-        Reduza a janela e teste.
-      </p>
-
       <div class="hamburger-demo-box">
         <div class="demo-navbar-mini">
           <span class="demo-brand">MeuSite</span>
-          <div class="demo-links" id="demo-links">
-            <a href="#">Início</a>
-            <a href="#">Sobre</a>
-            <a href="#">Contato</a>
-          </div>
           <button class="demo-hamburger" id="demo-hamburger">
             <span></span><span></span><span></span>
           </button>
@@ -164,44 +106,28 @@
           <a href="#">Sobre</a>
           <a href="#">Contato</a>
         </div>
-        <div class="hamburger-hint">
-          ↑ Clique no ☰ para abrir/fechar o menu
-        </div>
       </div>
-
       <div class="hamburger-status" id="hamburger-status">Menu fechado</div>
     </section>
 
-    <!-- SEÇÃO 4: GRID RESPONSIVO INTERATIVO -->
     <section class="section alt" id="secao-grid">
       <div class="section-label">04</div>
       <h2 class="section-title">Grid interativo</h2>
-      <p class="section-desc">
-        Altere o número de colunas e veja o layout se ajustar em tempo real.
-      </p>
-
       <div class="grid-controls">
         <button class="grid-btn active" data-cols="1">1 col</button>
         <button class="grid-btn" data-cols="2">2 cols</button>
         <button class="grid-btn" data-cols="3">3 cols</button>
-        <button class="grid-btn" data-cols="4">4 cols</button>
       </div>
-
       <div class="interactive-grid" id="interactive-grid">
         <div class="igrid-item">Item 1</div>
         <div class="igrid-item">Item 2</div>
         <div class="igrid-item">Item 3</div>
         <div class="igrid-item">Item 4</div>
-        <div class="igrid-item">Item 5</div>
-        <div class="igrid-item">Item 6</div>
-        <div class="igrid-item">Item 7</div>
-        <div class="igrid-item">Item 8</div>
       </div>
     </section>
 
-    <!-- FOOTER -->
     <footer class="footer">
-      <span>Layout &amp; Responsividade Tester</span>
+      <span>Layout Tester</span>
       <span class="footer-sep">·</span>
       <span id="footer-width"></span>
     </footer>
