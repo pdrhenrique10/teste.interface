@@ -1,105 +1,31 @@
-Projeto de Teste de Interface do Usuário Responsiva
-1. Introdução
-Este projeto foi desenvolvido com o objetivo de demonstrar, na prática, conceitos fundamentais de desenvolvimento front-end voltados à criação de interfaces responsivas e adaptáveis.
+TESTE DE INTERFACE DO USUÁRIO
+Laboratório de Validação de Interface e Experiência do Usuário
+Este projeto é um ambiente controlado projetado para garantir que elementos visuais e funcionais funcionem corretamente, sejam intuitivos e consistentes para o usuário final. O laboratório foca na usabilidade, navegabilidade e aparência através dos seguintes pilares:
 
-A aplicação simula diferentes cenários de comportamento visual em múltiplos dispositivos, permitindo validar a responsividade, organização de layout, tratamento de conteúdo textual e interação com componentes dinâmicos da interface.
+🛠️ Funcionalidades e Validações
+1. Sistema de Temas (Modo Escuro e Claro)
+Dual-Tone Architecture: O sistema utiliza variáveis globais para alternar entre uma interface de alto contraste (Dark Mode) e uma interface focada em legibilidade e conforto visual (Light Mode).
 
-Este trabalho foi elaborado como atividade acadêmica do curso de Tecnologia da Informação – SENAI.
-
-
-2. Objetivo do Projeto
-O principal objetivo deste sistema é testar e validar:
-Responsividade em diferentes resoluções de tela;
-Adaptação automática de layout;
-Reorganização dinâmica de grids;
-Comportamento de textos longos (overflow);
-Funcionamento de menu hambúrguer em dispositivos móveis;
-Alteração interativa de colunas em tempo real.
+Persistência de Estilo: A arquitetura garante que a identidade visual e a consistência das cores sejam mantidas independentemente do tema selecionado, validando a integridade da aparência.
 
 
-3. Tecnologias Utilizadas
-As seguintes tecnologias foram empregadas no desenvolvimento:
-HTML5
-CSS3
-JavaScript (Vanilla JS)
+3. Validação de Input
+Feedback de Foco: O campo de texto possui uma regra de estilo onde o foco altera a cor da borda via CSS, facilitando a identificação visual da área ativa para o usuário.
+
+Integridade de Layout: Inclui testes de tratamento de texto (overflow), onde conteúdos excessivamente longos são cortados automaticamente com reticências para não quebrar a estrutura do dashboard.
 
 
-5. Funcionalidades Implementadas
-4.1 Layout Responsivo
-A interface adapta automaticamente seus componentes conforme o tamanho da tela:
+3. Estados Assíncronos
+Feedback de Processamento: O sistema simula interações de "vida real" onde o botão assume um estado de carregamento (loading), fornecendo feedback visual enquanto uma tarefa é processada.
 
-Mobile: layout em coluna única;
-Tablet: layout intermediário;
-Desktop: múltiplas colunas.
-
-4.2 Grid Adaptável
-Os cards reorganizam-se dinamicamente de acordo com a largura disponível da viewport.
-
-4.3 Controle de Overflow de Texto
-Foram implementados testes para:
-Truncamento em uma linha;
-Truncamento em duas linhas;
-Quebra de palavras extensas;
-Controle de overflow com wrap e hidden.
-4.4 Menu Hambúrguer Responsivo
-
-Em resoluções menores, o menu horizontal converte-se automaticamente em menu hambúrguer.
-
-4.5 Grid Interativo Dinâmico
-O usuário pode alterar a quantidade de colunas exibidas em tempo real:
-
-1 coluna
-2 colunas
-3 colunas
-4 colunas
-5. Estrutura do Projeto
-/interface
-│
-├── index.html
-├── style.css
-├── script.js
-└── README.md
+Prevenção de Erros: Durante o estado assíncrono, as interações são bloqueadas para evitar cliques duplos e envios repetidos de dados, garantindo a funcionalidade correta dos botões.
 
 
-6. Como Executar o Projeto
+4. Notificações
+Respostas do Sistema: Implementação de notificações (Toasts) dinâmicas que validam a resposta visual de eventos do sistema.
 
-O projeto pode ser acessado de duas formas:
+Confirmação de Ações: O usuário recebe mensagens claras de "Sucesso" ou "Erro" após interagir com os elementos, garantindo que o fluxo de navegação seja intuitivo e informativo.
 
-Opção 1: Acesso Online (Vercel)
-O sistema pode ser aberto diretamente pelo link disponibilizado na plataforma Vercel, enviado por e-mail junto com a entrega do trabalho.
+Desenvolvido para fins acadêmicos e validação de competências de UI/UX Engineering.
 
-Passos:
-Abrir o e-mail enviado com o projeto;
-Localizar o link de hospedagem do Vercel;
-Clicar no link para acessar o sistema online no navegador.
-
-Opção 2: Execução Local
-Baixar ou clonar os arquivos do projeto;
-Abrir a pasta no editor de código (VS Code recomendado);
-Executar o arquivo index.html em um navegador.
-
-
-7. Resultados Esperados
-Ao executar o sistema, espera-se observar:
-
-Adaptação automática da interface;
-Reorganização fluida dos elementos;
-Funcionamento correto dos botões interativos;
-Comportamento adequado em diferentes resoluções.
-
-
-8. Considerações Finais
-
-O desenvolvimento deste projeto permitiu aplicar conceitos essenciais de front-end moderno, especialmente no que diz respeito à experiência do usuário (UX), design responsivo e organização visual adaptativa.
-
-A atividade contribui para o aprimoramento das habilidades práticas em construção de interfaces web profissionais.
-
-
-9. Autor
-
-Aluno: Pedro Henrrique de Moura Martins e Luciano Junior
-Curso: Informática
-
-
-10. Licença
-Projeto desenvolvido exclusivamente para fins educacionais e acadêmicos.
+FEITO POR PEDRO HENRIQUE E LUCIANO PARA FINS ACADÊMICOS.
