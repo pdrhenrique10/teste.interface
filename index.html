@@ -3,133 +3,75 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Layout & Responsividade — Tester</title>
+    <title>Premium Desktop Interface — 1080p</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header class="navbar" id="navbar">
+    <header class="navbar">
       <div class="nav-brand">
         <span class="brand-dot"></span>
-        <span class="brand-text">TesteDeInterface </span>
+        <span class="brand-text">ULTRA_INTERFACE</span>
       </div>
-      <nav class="nav-links" id="nav-links">
-        <a href="#secao-responsividade">Responsividade</a>
-        <a href="#secao-textos">Textos</a>
-        <a href="#secao-hamburger">Menu</a>
-        <a href="#secao-grid">Grid</a>
+      <nav class="nav-links">
+        <a href="#grid">Sistemas</a>
+        <a href="#typography">Tipografia</a>
+        <a href="#components">Componentes</a>
+        <a href="#performance">Performance</a>
       </nav>
-      <button class="hamburger" id="hamburger" aria-label="Abrir menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      <div class="nav-actions">
+        <button class="btn-secondary">Login</button>
+        <button class="btn-primary">Get Started</button>
+      </div>
     </header>
 
-    <section class="hero">
-      <div class="hero-tag">Teste de Interface do Usuário</div>
-      <h1 class="hero-title">Sua interface<br /><em>se adapta?</em></h1>
-      <p class="hero-sub">
-        Use os botões abaixo para <strong>forçar</strong> layouts ou redimensione a janela.
-      </p>
-      <div class="hero-resize-hint">
-        <span class="resize-icon">↔</span>
-        <span>Arraste a borda ou clique nos botões abaixo</span>
-      </div>
-      <div class="viewport-badge" id="viewport-badge">-- x --</div>
-    </section>
+    <main>
+      <section class="hero">
+        <div class="hero-content">
+          <div class="hero-tag">Optimizado para 1920x1080</div>
+          <h1 class="hero-title">Arquitetura Visual<br /><span>em Alta Definição.</span></h1>
+          <p class="hero-sub">
+            Uma interface desenhada para aproveitar cada pixel do seu monitor. 
+            Sem compromissos com mobile, apenas performance e design desktop puro.
+          </p>
+          <div class="viewport-display" id="viewport-badge">1920 x 1080</div>
+        </div>
+      </section>
 
-    <section class="section" id="secao-responsividade">
-      <div class="section-label">01</div>
-      <h2 class="section-title">Celular · Tablet · Desktop</h2>
-      <p class="section-desc">
-        Clique nos botões abaixo para simular o comportamento em diferentes dispositivos.
-      </p>
+      <section class="section" id="grid">
+        <div class="section-header">
+          <div>
+            <span class="section-label">01 / LAYOUT</span>
+            <h2 class="section-title">Grid de Três Colunas Fixo</h2>
+          </div>
+          <p class="section-info">Aproveitamento horizontal máximo para leitura rápida.</p>
+        </div>
 
-      <div class="device-status" id="device-status">
-        <button class="device-pill" id="pill-mobile" style="cursor:pointer">📱 Mobile</button>
-        <button class="device-pill" id="pill-tablet" style="cursor:pointer">💻 Tablet</button>
-        <button class="device-pill" id="pill-desktop" style="cursor:pointer">🖥 Desktop</button>
-      </div>
-
-      <div class="responsive-grid">
-        <div class="resp-card">
-          <div class="resp-card-num">01</div>
-          <div class="resp-card-title">Card A</div>
-          <div class="resp-card-text">Este card se ajusta conforme o modo selecionado.</div>
+        <div class="desktop-grid">
+          <div class="card">
+            <span class="card-num">01</span>
+            <h3>Alta Densidade</h3>
+            <p>Cards largos que permitem descrições detalhadas sem apertar o conteúdo.</p>
+          </div>
+          <div class="card">
+            <span class="card-num">02</span>
+            <h3>Controlo de Rato</h3>
+            <p>Interações pensadas para o cursor, com efeitos de hover suaves e precisos.</p>
+          </div>
+          <div class="card">
+            <span class="card-num">03</span>
+            <h3>Hierarquia</h3>
+            <p>Otimizado para a visão humana em monitores widescreen (padrão F-pattern).</p>
+          </div>
         </div>
-        <div class="resp-card">
-          <div class="resp-card-num">02</div>
-          <div class="resp-card-title">Card B</div>
-          <div class="resp-card-text">Em mobile ele ocupa a largura total.</div>
-        </div>
-        <div class="resp-card">
-          <div class="resp-card-num">03</div>
-          <div class="resp-card-title">Card C</div>
-          <div class="resp-card-text">Em desktop ele divide o espaço em 3.</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section alt" id="secao-textos">
-      <div class="section-label">02</div>
-      <h2 class="section-title">Textos e overflow</h2>
-      <div class="text-tests">
-        <div class="text-test-card">
-          <div class="text-test-label">Texto truncado (1 linha)</div>
-          <div class="text-truncate-1">Este é um texto muito longo que deveria ser truncado com reticências.</div>
-        </div>
-        <div class="text-test-card">
-          <div class="text-test-label">Palavra sem espaço</div>
-          <div class="text-break">Supercalifragilisticexpialidocious-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="secao-hamburger">
-      <div class="section-label">03</div>
-      <h2 class="section-title">Menu hambúrguer</h2>
-      <div class="hamburger-demo-box">
-        <div class="demo-navbar-mini">
-          <span class="demo-brand">MeuSite</span>
-          <button class="demo-hamburger" id="demo-hamburger">
-            <span></span><span></span><span></span>
-          </button>
-        </div>
-        <div class="demo-menu-open" id="demo-menu-open">
-          <a href="#">Início</a>
-          <a href="#">Sobre</a>
-          <a href="#">Contato</a>
-        </div>
-      </div>
-      <div class="hamburger-status" id="hamburger-status">Menu fechado</div>
-    </section>
-
-    <section class="section alt" id="secao-grid">
-      <div class="section-label">04</div>
-      <h2 class="section-title">Grid interativo</h2>
-      <div class="grid-controls">
-        <button class="grid-btn active" data-cols="1">1 col</button>
-        <button class="grid-btn" data-cols="2">2 cols</button>
-        <button class="grid-btn" data-cols="3">3 cols</button>
-      </div>
-      <div class="interactive-grid" id="interactive-grid">
-        <div class="igrid-item">Item 1</div>
-        <div class="igrid-item">Item 2</div>
-        <div class="igrid-item">Item 3</div>
-        <div class="igrid-item">Item 4</div>
-      </div>
-    </section>
+      </section>
+    </main>
 
     <footer class="footer">
-      <span>Layout Tester</span>
-      <span class="footer-sep">·</span>
-      <span id="footer-width"></span>
+      <div class="footer-left">© 2024 Design Desktop Purista</div>
+      <div class="footer-right" id="footer-width">1920 px</div>
     </footer>
 
     <script src="script.js"></script>
