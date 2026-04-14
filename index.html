@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Premium Desktop Interface — 1080p</title>
+    <title>UI/UX Validation Studio — Fixed 1920x1080</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -13,65 +13,100 @@
     <header class="navbar">
       <div class="nav-brand">
         <span class="brand-dot"></span>
-        <span class="brand-text">ULTRA_INTERFACE</span>
+        <span class="brand-text">TESTE.INTERFACE</span>
       </div>
       <nav class="nav-links">
-        <a href="#grid">Sistemas</a>
-        <a href="#typography">Tipografia</a>
-        <a href="#components">Componentes</a>
+        <a href="#definition">Definição</a>
+        <a href="#consistency">Consistência</a>
         <a href="#performance">Performance</a>
+        <a href="#accessibility">Acessibilidade</a>
       </nav>
-      <div class="nav-actions">
-        <button class="btn-secondary">Login</button>
-        <button class="btn-primary">Get Started</button>
+      <div class="nav-status">
+        <span class="status-badge">DESKTOP_ONLY</span>
       </div>
     </header>
 
-    <main>
+    <main class="main-container">
       <section class="hero">
         <div class="hero-content">
-          <div class="hero-tag">Optimizado para 1920x1080</div>
-          <h1 class="hero-title">Arquitetura Visual<br /><span>em Alta Definição.</span></h1>
+          <div class="hero-tag">Ambiente de Validação Full HD</div>
+          <h1 class="hero-title">Sua Interface<br /><span>em Alta Definição.</span></h1>
           <p class="hero-sub">
-            Uma interface desenhada para aproveitar cada pixel do seu monitor. 
-            Sem compromissos com mobile, apenas performance e design desktop puro.
+            Uma plataforma projetada exclusivamente para monitores 1920x1080. Teste consistência, hierarquia e comportamento de componentes em escala real, sem as limitações do mobile.
           </p>
-          <div class="viewport-display" id="viewport-badge">1920 x 1080</div>
+          <div class="viewport-display">
+            <span class="resize-icon">🖥</span>
+            <span id="viewport-badge">1920 x 1080 PX</span>
+          </div>
         </div>
       </section>
 
-      <section class="section" id="grid">
+      <section class="section" id="definition">
         <div class="section-header">
           <div>
-            <span class="section-label">01 / LAYOUT</span>
-            <h2 class="section-title">Grid de Três Colunas Fixo</h2>
+            <span class="section-label">01 / CONCEITO</span>
+            <h2 class="section-title">O que é Teste de UI?</h2>
           </div>
-          <p class="section-info">Aproveitamento horizontal máximo para leitura rápida.</p>
+          <div class="section-quote">
+            <p>"Garante que elementos visuais e funcionais funcionem corretamente."</p>
+          </div>
+        </div>
+        
+        <div class="desktop-split">
+          <div class="info-card">
+            <h3>Foco na Usabilidade</h3>
+            <p>O teste de UI (Interface do Usuário) foca na usabilidade, navegabilidade e aparência. Ele valida se menus, botões, cores e layouts são consistentes para o usuário final.</p>
+          </div>
+          <div class="visual-card">
+            <div class="visual-brand-demo">
+              <span class="dot"></span>
+              TesteDeInterface 
+            </div>
+            <div class="visual-element-demo">
+              <button class="demo-btn-primary">Botão Primário</button>
+              <button class="demo-btn-secondary">Botão Secundário</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section alt" id="consistency">
+        <div class="section-header">
+          <div>
+            <span class="section-label">02 / SISTEMA</span>
+            <h2 class="section-title">Hierarquia Visual em Larga Escala</h2>
+          </div>
         </div>
 
         <div class="desktop-grid">
-          <div class="card">
+          <div class="grid-card">
             <span class="card-num">01</span>
-            <h3>Alta Densidade</h3>
-            <p>Cards largos que permitem descrições detalhadas sem apertar o conteúdo.</p>
+            <h3>Tipografia Fluida</h3>
+            <p>Em 1080p, podemos usar tamanhos de fonte generosos sem comprometer o layout.</p>
           </div>
-          <div class="card">
+          <div class="grid-card">
             <span class="card-num">02</span>
-            <h3>Controlo de Rato</h3>
-            <p>Interações pensadas para o cursor, com efeitos de hover suaves e precisos.</p>
+            <h3>Espaçamento Wide</h3>
+            <p>Gaps de 2rem (32px) ou mais criam respiro e clareza para o mouse.</p>
           </div>
-          <div class="card">
+          <div class="grid-card">
             <span class="card-num">03</span>
-            <h3>Hierarquia</h3>
-            <p>Otimizado para a visão humana em monitores widescreen (padrão F-pattern).</p>
+            <h3>Cards Largs</h3>
+            <p>O espaço horizontal permite que os cards contenham mais informação sem empilhar.</p>
+          </div>
+          <div class="grid-card">
+            <span class="card-num">04</span>
+            <h3>Densidade de Dados</h3>
+            <p>Ideal para dashboards complexos onde a visualização simultânea é crucial.</p>
           </div>
         </div>
       </section>
     </main>
 
     <footer class="footer">
-      <div class="footer-left">© 2024 Design Desktop Purista</div>
-      <div class="footer-right" id="footer-width">1920 px</div>
+      <span>Layout Desktop Purista / Fixação 1920x1080</span>
+      <span class="footer-sep">·</span>
+      <span id="footer-width">1920 PX</span>
     </footer>
 
     <script src="script.js"></script>
