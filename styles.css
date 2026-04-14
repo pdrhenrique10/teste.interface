@@ -13,29 +13,20 @@
   --bg: #0d0d0f;
   --bg-alt: #111114;
   --surface: #18181c;
-  --surface-2: #222228;
   --border: #2a2a32;
-  --border-light: #38383f;
   --accent: #c8f135;
-  --accent-dim: #a8cf1a;
-  --accent-bg: rgba(200, 241, 53, 0.08);
   --text: #f0f0f2;
   --text-muted: #888898;
   --text-dim: #555560;
-  --red: #ff4d4d;
-  --green: #4dff91;
-  --blue: #4da6ff;
   --font-display: "Space Mono", monospace;
   --font-body: "DM Sans", sans-serif;
-  --radius: 10px;
   --radius-lg: 18px;
-  /* Melhorei a transição para ser mais suave */
   --transition: 0.3s ease-in-out;
 }
 
 html {
   scroll-behavior: smooth;
-  /* Previne que o texto aumente automaticamente no iOS horizontal */
+  /* Evita que o iOS aumente o texto sozinho */
   -webkit-text-size-adjust: 100%;
 }
 
@@ -43,30 +34,17 @@ body {
   font-family: var(--font-body);
   background-color: var(--bg);
   color: var(--text);
-  line-height: 1.6;
+  line-height: 1.5;
   overflow-x: hidden;
-  /* Adicionei transição no body para os modos de simulação */
-  transition: background-color var(--transition);
 }
 
-a {
-  color: var(--text-muted);
-  text-decoration: none;
-  transition: color var(--transition);
-  display: inline-block; /* Melhora área de toque */
-  padding: 4px 0;
-}
-a:hover {
-  color: var(--accent);
-}
-
-/* Utilitário para área de toque mínima (acessibilidade) */
-.touch-target,
+/* Melhoria para acessibilidade no toque */
 button,
 .device-pill,
 .grid-btn,
-.nav-links a {
+a {
   min-height: 44px;
+  cursor: pointer;
 }
 
 /* ===========================
@@ -79,13 +57,12 @@ button,
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* Usei clamp para padding lateral dinâmico */
-  padding: 0 clamp(1rem, 5vw, 2rem);
+  padding: 0 1.25rem;
   height: 60px;
-  background: rgba(13, 13, 15, 0.95); /* Um pouco mais opaco */
+  background: rgba(13, 13, 15, 0.95);
   border-bottom: 1px solid var(--border);
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px); /* Suporte Safari */
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .nav-brand {
@@ -93,10 +70,7 @@ button,
   align-items: center;
   gap: 8px;
   font-family: var(--font-display);
-  font-size: 14px;
   font-weight: 700;
-  color: var(--text);
-  letter-spacing: -0.01em;
 }
 
 .brand-dot {
@@ -108,9 +82,8 @@ button,
 
 .nav-links {
   display: flex;
-  gap: 2rem;
+  gap: 1.5rem;
   font-size: 14px;
-  transition: all var(--transition);
 }
 
 .hamburger {
@@ -119,679 +92,196 @@ button,
   gap: 5px;
   background: none;
   border: none;
-  cursor: pointer;
-  padding: 8px; /* Aumentei área de toque */
-  margin-right: -8px; /* Ajuste visual */
+  padding: 8px;
 }
 
 .hamburger span {
-  display: block;
   width: 22px;
   height: 2px;
   background: var(--text);
   border-radius: 2px;
-  transition:
-    transform 0.3s,
-    opacity 0.3s;
-}
-
-.hamburger.open span:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
-.hamburger.open span:nth-child(2) {
-  opacity: 0;
-}
-.hamburger.open span:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
 }
 
 /* ===========================
-   HERO
+   HERO (Ajustado para Celular)
 =========================== */
 .hero {
-  /* Padding lateral menor no mobile real */
-  padding: clamp(4rem, 10vh, 6rem) clamp(1rem, 5vw, 2rem) 4rem;
+  padding: 4rem 1.25rem 3rem;
   max-width: 860px;
   margin: 0 auto;
-  text-align: center; /* Centralizei por padrão */
-}
-
-.hero-tag {
-  display: inline-block;
-  font-family: var(--font-display);
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 1px solid rgba(200, 241, 53, 0.2);
-  padding: 6px 14px; /* Mais robusto */
-  border-radius: 100px;
-  margin-bottom: 1.5rem;
+  text-align: center;
 }
 
 .hero-title {
   font-family: var(--font-display);
-  /* Reduzi o mínimo do clamp para não quebrar no mobile real */
-  font-size: clamp(2.2rem, 8vw, 5rem);
-  font-weight: 700;
-  line-height: 1.1; /* Melhor para títulos multilinha */
-  letter-spacing: -0.03em;
-  color: var(--text);
-  margin-bottom: 1.25rem;
+  /* clamp() impede que o título fique gigante ou minúsculo */
+  font-size: clamp(2rem, 8vw, 4.5rem);
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  /* Quebra palavras longas se necessário */
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 .hero-title em {
-  font-style: normal;
   color: var(--accent);
+  font-style: normal;
 }
 
 .hero-sub {
-  font-size: clamp(1rem, 2.5vw, 1.1rem);
+  font-size: clamp(0.95rem, 3vw, 1.1rem);
   color: var(--text-muted);
-  max-width: 520px;
-  margin: 0 auto 2.5rem; /* Centralizado com margem inferior maior */
-}
-
-.hero-resize-hint {
-  display: inline-flex; /* Melhor alinhamento central */
-  align-items: center;
-  gap: 10px;
-  font-size: 13px;
-  color: var(--text-dim);
-  font-family: var(--font-display);
-  margin-bottom: 2rem;
-  padding: 8px 16px;
-  background: var(--surface);
-  border-radius: 100px;
-  border: 1px solid var(--border);
-}
-
-.resize-icon {
-  font-size: 18px;
-  animation: bounce-x 1.5s ease-in-out infinite;
-}
-
-@keyframes bounce-x {
-  0%,
-  100% {
-    transform: translateX(0);
-  }
-  50% {
-    transform: translateX(4px);
-  }
+  max-width: 500px;
+  margin: 0 auto 2rem;
 }
 
 .viewport-badge {
   display: inline-block;
+  padding: 8px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--accent);
   font-family: var(--font-display);
   font-size: 13px;
-  background: var(--surface-2); /* Destaque */
-  border: 1px solid var(--border-light);
-  padding: 8px 20px;
-  border-radius: var(--radius);
-  color: var(--accent);
-  font-weight: 700;
 }
 
 /* ===========================
-   SECTIONS GENERAL
+   SECTIONS
 =========================== */
 .section {
-  /* Padding lateral inteligente clamp() */
-  padding: clamp(3rem, 8vh, 5rem) clamp(1rem, 5vw, 2rem);
+  padding: 4rem 1.25rem;
   max-width: 960px;
   margin: 0 auto;
-  transition: padding var(--transition);
 }
 
 .section.alt {
   background: var(--bg-alt);
   max-width: 100%;
 }
-
 .section.alt > * {
   max-width: 960px;
-  margin-left: auto;
-  margin-right: auto;
-  /* Padding interno preservado para o conteúdo */
-  padding-left: 0;
-  padding-right: 0;
-}
-
-.section-label {
-  font-family: var(--font-display);
-  font-size: 11px;
-  color: var(--accent);
-  letter-spacing: 0.15em;
-  margin-bottom: 0.5rem;
+  margin: 0 auto;
 }
 
 .section-title {
   font-family: var(--font-display);
-  font-size: clamp(1.5rem, 4vw, 2.2rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  margin-bottom: 0.75rem;
-}
-
-.section-desc {
-  font-size: clamp(0.95rem, 2vw, 1rem);
-  color: var(--text-muted);
-  margin-bottom: 3rem;
-  max-width: 600px;
+  font-size: clamp(1.5rem, 5vw, 2.2rem);
+  margin-bottom: 1.5rem;
 }
 
 /* ===========================
-   SEÇÃO 1: RESPONSIVIDADE
+   GRIDS & CARDS (Onde o texto quebrava)
+=========================== */
+.responsive-grid,
+.text-tests {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.resp-card,
+.text-test-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem; /* Padding reduzido para dar mais espaço ao texto */
+  display: flex;
+  flex-direction: column;
+  /* GARANTE QUE O CONTEÚDO NÃO "VAZE" */
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+.resp-card-title,
+.text-test-label {
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+/* ===========================
+   DEVICE SIMULATION (Mecânica de Botão)
 =========================== */
 .device-status {
   display: flex;
-  gap: 12px;
-  margin-bottom: 3rem;
+  gap: 8px;
+  margin-bottom: 2rem;
   flex-wrap: wrap;
-  justify-content: center; /* Centralizado no mobile */
+  justify-content: center;
 }
 
 .device-pill {
-  font-size: 13px;
-  /* Aumentei padding vertical para 12px (área de toque >44px) */
-  padding: 12px 20px;
+  padding: 8px 16px;
   border-radius: 100px;
   border: 1px solid var(--border);
-  color: var(--text-muted);
   background: var(--surface);
-  transition: all var(--transition);
+  color: var(--text-muted);
   font-family: var(--font-display);
-  cursor: pointer;
+  font-size: 12px;
   display: flex;
   align-items: center;
-  gap: 8px;
-}
-
-.device-pill:hover {
-  border-color: var(--border-light);
-  color: var(--text);
+  justify-content: center;
 }
 
 .device-pill.active {
   border-color: var(--accent);
   color: var(--accent);
-  background: var(--accent-bg);
-  font-weight: 700;
-}
-
-.responsive-grid {
-  display: grid;
-  /* Padrão desktop 3 colunas */
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  transition: all 0.5s ease-in-out; /* Transição mais lenta para o grid */
-}
-
-.resp-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 2rem; /* Mais respiro interno */
-  transition: all var(--transition);
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.resp-card:hover {
-  border-color: var(--accent-dim);
-  transform: translateY(-2px);
-}
-
-.resp-card-num {
-  font-family: var(--font-display);
-  font-size: 11px;
-  color: var(--accent);
-  letter-spacing: 0.1em;
-  margin-bottom: 0.25rem;
-}
-
-.resp-card-title {
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--text);
-}
-
-.resp-card-text {
-  font-size: 15px;
-  color: var(--text-muted);
-  line-height: 1.6;
+  background: rgba(200, 241, 53, 0.05);
 }
 
 /* ===========================
-   SEÇÃO 2: TEXTOS
-=========================== */
-.text-tests {
-  display: grid;
-  /* Padrão desktop 2 colunas */
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-}
-
-.text-test-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 1.5rem;
-}
-
-.text-test-label {
-  font-family: var(--font-display);
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  color: var(--accent);
-  margin-bottom: 1rem;
-  text-transform: uppercase;
-}
-
-.text-truncate-1 {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-size: 14px;
-  color: var(--text-muted);
-}
-
-.text-truncate-2 {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  font-size: 14px;
-  color: var(--text-muted);
-}
-
-.text-break {
-  font-size: 14px;
-  color: var(--text-muted);
-  word-break: break-all;
-  overflow-wrap: anywhere;
-}
-
-.text-overflow-demo {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.overflow-box {
-  flex: 1;
-  min-width: 240px; /* Previne ficar muito estreito */
-  padding: 15px;
-  border-radius: var(--radius);
-  font-size: 13px;
-  line-height: 1.5;
-  position: relative;
-  padding-top: 35px;
-}
-
-.overflow-box.bad {
-  background: rgba(255, 77, 77, 0.08);
-  border: 1px solid rgba(255, 77, 77, 0.25);
-  color: var(--text-muted);
-  overflow: visible;
-  word-break: normal;
-}
-
-.overflow-box.good {
-  background: rgba(77, 255, 145, 0.06);
-  border: 1px solid rgba(77, 255, 145, 0.2);
-  color: var(--text-muted);
-  overflow-wrap: break-word;
-  word-break: break-word;
-}
-
-.ov-label {
-  position: absolute;
-  top: 10px;
-  left: 15px;
-  font-size: 11px;
-  font-family: var(--font-display);
-  color: var(--text-dim);
-  font-weight: 700;
-}
-
-/* ===========================
-   SEÇÃO 3: HAMBÚRGUER DEMO
-=========================== */
-.hamburger-demo-box {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  margin-bottom: 1.5rem;
-}
-
-.demo-navbar-mini {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 1.5rem;
-  height: 56px;
-  border-bottom: 1px solid var(--border);
-}
-
-.demo-brand {
-  font-family: var(--font-display);
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--text);
-}
-
-.demo-links {
-  display: flex;
-  gap: 1.5rem;
-  font-size: 14px;
-  color: var(--text-muted);
-}
-
-.demo-hamburger {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  background: none;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  cursor: pointer;
-  padding: 10px 12px; /* Área de toque robusta */
-}
-
-.demo-hamburger span {
-  display: block;
-  width: 18px;
-  height: 2px;
-  background: var(--text-muted);
-  border-radius: 2px;
-  transition:
-    transform 0.3s,
-    opacity 0.3s;
-}
-
-.demo-hamburger.open span:nth-child(1) {
-  transform: translateY(6px) rotate(45deg);
-}
-.demo-hamburger.open span:nth-child(2) {
-  opacity: 0;
-}
-.demo-hamburger.open span:nth-child(3) {
-  transform: translateY(-6px) rotate(-45deg);
-}
-
-.demo-menu-open {
-  display: none;
-  flex-direction: column;
-  padding: 0;
-  background: var(--surface-2);
-  overflow: hidden;
-  max-height: 0;
-  transition:
-    max-height 0.4s ease-in-out,
-    padding 0.3s;
-}
-
-.demo-menu-open.open {
-  display: flex;
-  max-height: 300px; /* Aumentei para garantir */
-  padding: 1rem 0;
-}
-
-.demo-menu-open a {
-  padding: 12px 1.5rem; /* Mais robusto para toque */
-  font-size: 15px;
-  color: var(--text-muted);
-  border-left: 3px solid transparent;
-  transition: all 0.2s;
-}
-
-.demo-menu-open a:hover {
-  background: var(--surface);
-  border-left-color: var(--accent);
-  color: var(--text);
-  padding-left: 1.75rem; /* Efeito visual */
-}
-
-.hamburger-hint {
-  padding: 1rem 1.5rem;
-  font-size: 12px;
-  color: var(--text-dim);
-  font-family: var(--font-display);
-  border-top: 1px solid var(--border);
-  background: var(--bg-alt);
-}
-
-.hamburger-status {
-  font-family: var(--font-display);
-  font-size: 13px;
-  color: var(--text-dim);
-  padding: 8px 0;
-  text-align: center;
-}
-
-/* ===========================
-   SEÇÃO 4: GRID INTERATIVO
-=========================== */
-.grid-controls {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-bottom: 2rem;
-  justify-content: center;
-}
-
-.grid-btn {
-  font-family: var(--font-display);
-  font-size: 12px;
-  /* Aumentei padding vertical para 12px (área de toque >44px) */
-  padding: 12px 20px;
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  background: var(--surface);
-  color: var(--text-muted);
-  cursor: pointer;
-  transition: all var(--transition);
-  letter-spacing: 0.04em;
-}
-
-.grid-btn:hover {
-  border-color: var(--border-light);
-  color: var(--text);
-}
-.grid-btn.active {
-  background: var(--accent-bg);
-  border-color: var(--accent);
-  color: var(--accent);
-  font-weight: 700;
-}
-
-.interactive-grid {
-  display: grid;
-  grid-template-columns: 1fr; /* Padrão mobile */
-  gap: 1rem;
-  transition: grid-template-columns 0.4s ease-in-out;
-}
-
-.igrid-item {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.5rem 2rem;
-  font-family: var(--font-display);
-  font-size: 13px;
-  color: var(--text-muted);
-  transition: all var(--transition);
-  min-height: 90px;
-  display: flex;
-  align-items: center;
-  justify-content: center; /* Centralizado */
-}
-
-.igrid-item:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-  background: var(--accent-bg);
-  transform: scale(1.02);
-}
-
-/* ===========================
-   FOOTER
-=========================== */
-.footer {
-  border-top: 1px solid var(--border);
-  padding: 2rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-family: var(--font-display);
-  font-size: 12px;
-  color: var(--text-dim);
-  justify-content: center; /* Centralizado */
-  flex-wrap: wrap; /* Para mobile muito pequeno */
-}
-
-.footer-sep {
-  color: var(--border-light);
-}
-
-/* ===========================
-   REGRAS DE SIMULAÇÃO (JS Control)
-   Estas regras forçam o layout independente da tela real.
+   REGRAS DE LAYOUT FORÇADO
 =========================== */
 
-/* --- FORÇAR MODO MOBILE --- */
-body.is-mobile .navbar {
-  padding: 0 1rem;
-}
+/* --- MODO MOBILE (is-mobile) --- */
 body.is-mobile .nav-links {
   display: none;
   position: absolute;
   top: 60px;
   left: 0;
   right: 0;
-  background: rgba(13, 13, 15, 0.98);
+  background: var(--bg);
+  padding: 2rem;
   flex-direction: column;
-  padding: 1.5rem 2rem;
   border-bottom: 1px solid var(--border);
-  gap: 1rem;
-  opacity: 0;
-  transform: translateY(-10px);
 }
 body.is-mobile .nav-links.open {
   display: flex;
-  opacity: 1;
-  transform: translateY(0);
 }
 body.is-mobile .hamburger {
   display: flex;
 }
-body.is-mobile .hero {
-  padding: 4rem 1rem 3rem;
-  text-align: center;
-}
-body.is-mobile .hero-title {
-  font-size: 2.2rem;
-}
-body.is-mobile .hero-sub {
-  font-size: 0.95rem;
-}
-body.is-mobile .responsive-grid {
-  grid-template-columns: 1fr;
-  gap: 1rem;
-}
+body.is-mobile .responsive-grid,
 body.is-mobile .text-tests {
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr; /* Coluna única no celular */
 }
-body.is-mobile .grid-controls {
-  justify-content: center;
-}
-/* Demo Hamburger na seção 3 deve se comportar como mobile */
-body.is-mobile .demo-links {
-  display: none;
-}
-body.is-mobile .demo-hamburger {
-  display: flex;
+body.is-mobile .section {
+  padding: 3rem 1rem;
 }
 
-/* --- FORÇAR MODO TABLET --- */
-body.is-tablet .nav-links {
-  display: flex;
-  gap: 1.5rem;
-  position: static;
-  background: none;
-  padding: 0;
-  flex-direction: row;
-  opacity: 1;
-  transform: none;
-}
-body.is-tablet .hamburger {
-  display: none;
-}
-body.is-tablet .responsive-grid {
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.25rem;
-}
+/* --- MODO TABLET (is-tablet) --- */
+body.is-tablet .responsive-grid,
 body.is-tablet .text-tests {
-  grid-template-columns: repeat(2, 1fr);
-}
-body.is-tablet .section {
-  padding: 4rem 1.5rem;
-}
-body.is-tablet .hero {
-  padding: 5rem 1.5rem 4rem;
-  text-align: center;
-}
-/* Demo Hamburger na seção 3 deve se comportar como desktop */
-body.is-tablet .demo-links {
-  display: flex;
-}
-body.is-tablet .demo-hamburger {
-  display: none;
-}
-body.is-tablet .demo-menu-open.open {
-  display: none;
+  grid-template-columns: 1fr 1fr; /* Duas colunas no tablet */
 }
 
-/* --- FORÇAR MODO DESKTOP --- */
-body.is-desktop .nav-links {
-  display: flex;
-  gap: 2rem;
-  position: static;
-  background: none;
-  padding: 0;
-  flex-direction: row;
-  opacity: 1;
-  transform: none;
-}
-body.is-desktop .hamburger {
-  display: none;
-}
+/* --- MODO DESKTOP (is-desktop) --- */
 body.is-desktop .responsive-grid {
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 body.is-desktop .text-tests {
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr 1fr;
 }
-body.is-desktop .section {
-  padding: 5rem 2rem;
-}
-body.is-desktop .hero {
-  padding: 6rem 2rem 4rem;
+
+/* FOOTER */
+.footer {
+  padding: 2rem 1.25rem;
+  border-top: 1px solid var(--border);
   text-align: center;
-}
-/* Demo Hamburger na seção 3 deve se comportar como desktop */
-body.is-desktop .demo-links {
-  display: flex;
-}
-body.is-desktop .demo-hamburger {
-  display: none;
-}
-body.is-desktop .demo-menu-open.open {
-  display: none;
+  font-family: var(--font-display);
+  font-size: 12px;
+  color: var(--text-dim);
 }
